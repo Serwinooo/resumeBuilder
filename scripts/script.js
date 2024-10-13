@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const previewSkillsList = document.getElementById('preview-skills');
     const previewProjects = document.getElementById('preview-projects');
 
-    // Function to update the live preview for contact info
     function updateContactPreview() {
         previewName.innerHTML = nameInput.value || 'Your Name';
         previewPhone.innerHTML = `${phoneInput.value || '(123) 456-7890'}`;
@@ -48,11 +47,15 @@ document.addEventListener('DOMContentLoaded', function () {
             <input type="checkbox" class="current-job">
             <label>Job Description:</label>
             <textarea class="job-description" placeholder="Brief job description"></textarea>
+            <button class="add-experience">Add Experience</button>
             <button class="remove-experience">Remove Experience</button>
         `;
         workExperienceContainer.appendChild(experienceItem);
 
-        // Update preview for the new work experience
+        // Create a corresponding preview item
+        const previewExperienceItem = document.createElement('div');
+        previewWorkExperience.appendChild(previewExperienceItem);
+
         const jobTitle = experienceItem.querySelector('.job-title');
         const company = experienceItem.querySelector('.company');
         const startDate = experienceItem.querySelector('.start-date');
@@ -61,17 +64,14 @@ document.addEventListener('DOMContentLoaded', function () {
         const jobDescription = experienceItem.querySelector('.job-description');
 
         function updateWorkPreview() {
-            previewWorkExperience.innerHTML = ''; // Clear previous previews
-            const employmentDates = currentJob.checked ? 'Present' : 
+            const employmentDates = currentJob.checked ? 'Present' :
                                     `${startDate.value} - ${endDate.value || 'End Date'}`;
 
-            const jobHTML = `<div>
-                <h2>Work Experience</h2>
+            previewExperienceItem.innerHTML = `<div>
                 <h3>${jobTitle.value || 'Job Title'} - ${company.value || 'Company'}</h3>
                 <p>${employmentDates}</p>
                 <p>${jobDescription.value || 'Brief description of job responsibilities and achievements.'}</p>
             </div>`;
-            previewWorkExperience.innerHTML += jobHTML; // Add to preview
         }
 
         jobTitle.addEventListener('input', updateWorkPreview);
@@ -81,11 +81,15 @@ document.addEventListener('DOMContentLoaded', function () {
         currentJob.addEventListener('change', updateWorkPreview);
         jobDescription.addEventListener('input', updateWorkPreview);
 
+        // Add Experience Button
+        const addExperienceBtn = experienceItem.querySelector('.add-experience');
+        addExperienceBtn.addEventListener('click', createWorkExperience);
+
         // Remove Experience
         const removeExperienceBtn = experienceItem.querySelector('.remove-experience');
         removeExperienceBtn.addEventListener('click', function () {
             workExperienceContainer.removeChild(experienceItem);
-            previewWorkExperience.innerHTML = ''; // Clear preview
+            previewWorkExperience.removeChild(previewExperienceItem); // Remove corresponding preview item
         });
     }
 
@@ -103,25 +107,26 @@ document.addEventListener('DOMContentLoaded', function () {
             <input type="month" class="graduation-date">
             <label>Achievements:</label>
             <textarea class="achievements" placeholder="Achievements (optional)"></textarea>
+            <button class="add-education">Add Education</button>
             <button class="remove-education">Remove Education</button>
         `;
         educationContainer.appendChild(educationItem);
 
-        // Update preview for the new education
+        // Create corresponding preview item
+        const previewEducationItem = document.createElement('div');
+        previewEducation.appendChild(previewEducationItem);
+
         const degree = educationItem.querySelector('.degree');
         const schoolName = educationItem.querySelector('.school-name');
         const graduationDate = educationItem.querySelector('.graduation-date');
         const achievements = educationItem.querySelector('.achievements');
 
         function updateEducationPreview() {
-            previewEducation.innerHTML = ''; // Clear previous previews
-            const educationHTML = `<div>
-                <h2>Education</h2>
+            previewEducationItem.innerHTML = `
                 <h3>${degree.value || 'Degree'} - ${schoolName.value || 'School'}</h3>
                 <p>Graduation: ${graduationDate.value || 'Year'}</p>
                 <p>${achievements.value || 'Achievements or notable activities.'}</p>
-            </div>`;
-            previewEducation.innerHTML += educationHTML; // Add to preview
+            `;
         }
 
         degree.addEventListener('input', updateEducationPreview);
@@ -129,11 +134,15 @@ document.addEventListener('DOMContentLoaded', function () {
         graduationDate.addEventListener('input', updateEducationPreview);
         achievements.addEventListener('input', updateEducationPreview);
 
+        // Add Education Button
+        const addEducationBtn = educationItem.querySelector('.add-education');
+        addEducationBtn.addEventListener('click', createEducation);
+
         // Remove Education
         const removeEducationBtn = educationItem.querySelector('.remove-education');
         removeEducationBtn.addEventListener('click', function () {
             educationContainer.removeChild(educationItem);
-            previewEducation.innerHTML = ''; // Clear preview
+            previewEducation.removeChild(previewEducationItem); // Remove corresponding preview item
         });
     }
 
@@ -144,31 +153,32 @@ document.addEventListener('DOMContentLoaded', function () {
         skillItem.innerHTML = `
             <label>Skill:</label>
             <input type="text" class="skill" placeholder="Skill">
+            <button class="add-skill">Add Skill</button>
             <button class="remove-skill">Remove Skill</button>
         `;
         skillsContainer.appendChild(skillItem);
 
         const skill = skillItem.querySelector('.skill');
-        const removeSkillBtn = skillItem.querySelector('.remove-skill');
 
         function updateSkillsPreview() {
-            previewSkillsList.innerHTML = ''; // Clear previous previews
             const skills = Array.from(skillsContainer.querySelectorAll('.skill'))
                                 .map(input => input.value)
                                 .filter(value => value);
-            skills.forEach(skill => {
-                const li = document.createElement('li');
-                li.textContent = skill;
-                previewSkillsList.appendChild(li);
-            });
+
+            previewSkillsList.innerHTML = skills.join(', ') || 'Add your skills';
         }
 
         skill.addEventListener('input', updateSkillsPreview);
 
+        // Add Skill Button
+        const addSkillBtn = skillItem.querySelector('.add-skill');
+        addSkillBtn.addEventListener('click', createSkill);
+
         // Remove Skill
+        const removeSkillBtn = skillItem.querySelector('.remove-skill');
         removeSkillBtn.addEventListener('click', function () {
             skillsContainer.removeChild(skillItem);
-            updateSkillsPreview();
+            updateSkillsPreview(); // Update preview after removing a skill
         });
     }
 
@@ -182,42 +192,43 @@ document.addEventListener('DOMContentLoaded', function () {
             <input type="text" class="project-title" placeholder="Project Title">
             <label>Description:</label>
             <textarea class="project-description" placeholder="Project Description"></textarea>
+            <button class="add-project">Add Project</button>
             <button class="remove-project">Remove Project</button>
         `;
         projectsContainer.appendChild(projectItem);
+
+        // Create corresponding preview item
+        const previewProjectItem = document.createElement('div');
+        previewProjects.appendChild(previewProjectItem);
 
         const projectTitle = projectItem.querySelector('.project-title');
         const projectDescription = projectItem.querySelector('.project-description');
 
         function updateProjectsPreview() {
-            previewProjects.innerHTML = ''; // Clear previous previews
-            const projectsHTML = Array.from(projectsContainer.querySelectorAll('.project-item'))
-                .map(item => {
-                    const title = item.querySelector('.project-title').value || 'Untitled Project';
-                    const desc = item.querySelector('.project-description').value || 'No description provided.';
-                    return `<div>
-                    <h2>Project Experience</h2>
-                    <h3>${title}</h3><p>${desc}</p></div>`;
-                }).join('');
-            previewProjects.innerHTML = projectsHTML; // Add to preview
+            previewProjectItem.innerHTML = `
+                <h3>${projectTitle.value || 'Project Title'}</h3>
+                <p>${projectDescription.value || 'Brief project description.'}</p>
+            `;
         }
 
         projectTitle.addEventListener('input', updateProjectsPreview);
         projectDescription.addEventListener('input', updateProjectsPreview);
 
+        // Add Project Button
+        const addProjectBtn = projectItem.querySelector('.add-project');
+        addProjectBtn.addEventListener('click', createProject);
+
         // Remove Project
         const removeProjectBtn = projectItem.querySelector('.remove-project');
         removeProjectBtn.addEventListener('click', function () {
             projectsContainer.removeChild(projectItem);
-            updateProjectsPreview();
+            previewProjects.removeChild(previewProjectItem); // Remove corresponding preview item
         });
     }
 
-    // Event listeners for adding sections
-    document.getElementById('add-experience').addEventListener('click', createWorkExperience);
-    document.getElementById('add-education').addEventListener('click', createEducation);
-    document.getElementById('add-skill').addEventListener('click', createSkill);
-    document.getElementById('add-project').addEventListener('click', createProject);
+    // Initialize with one work experience, education, skill, and project item
+    createWorkExperience();
+    createEducation();
+    createSkill();
+    createProject();
 });
-
-           

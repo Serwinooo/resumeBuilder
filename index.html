@@ -5,33 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resume Builder</title>
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/tabs.css">
 </head>
 <body>
     <div class="container">
-        <div class="form-section">
-            <h1>Resume Builder</h1>
-            <label for="name">Name:</label>
-            <input type="text" id="name" placeholder="Your Name">
-            <label for="phone">Phone:</label>
-            <input type="tel" id="phone" placeholder="(123) 456-7890">
-            <label for="location">Location:</label>
-            <input type="text" id="location" placeholder="City, Country">
-            <label for="website">Website:</label>
-            <input type="url" id="website" placeholder="https://yourwebsite.com">
-            
-            <div id="work-experience"></div>
-            <button id="add-experience">Add Work Experience</button>
-
-            <div id="education"></div>
-            <button id="add-education">Add Education</button>
-
-            <div id="skills"></div>
-            <button id="add-skill">Add Skill</button>
-
-            <div id="projects"></div>
-            <button id="add-project">Add Project</button>
+        <!-- Tabs Navigation -->
+        <div class="tabs">
+            <button class="tab-button active" data-tab="personal-info">Personal Info</button>
+            <button class="tab-button" data-tab="work-experience">Work Experience</button>
+            <button class="tab-button" data-tab="education">Education</button>
+            <button class="tab-button" data-tab="skills">Skills</button>
+            <button class="tab-button" data-tab="projects">Projects</button>
         </div>
-        
+
+        <!-- Form Sections -->
+        <div class="form-sections">
+            <div class="form-section active" id="personal-info">
+                <h1>Personal Info</h1>
+                <label for="name">Name:</label>
+                <input type="text" id="name" placeholder="Your Name">
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" placeholder="(123) 456-7890">
+                <label for="location">Location:</label>
+                <input type="text" id="location" placeholder="City, Country">
+                <label for="website">Website:</label>
+                <input type="url" id="website" placeholder="https://yourwebsite.com">
+            </div>
+
+            <!-- The dynamically created sections will go here -->
+            <div id="work-experience" class="form-section"></div>
+            <div id="education" class="form-section"></div>
+            <div id="skills" class="form-section"></div>
+            <div id="projects" class="form-section"></div>
+        </div>
+
+        <!-- Preview Section -->
         <div class="preview-section">
             <h1>Preview</h1>
             <div class="resume-container">
@@ -45,20 +53,20 @@
                 </header>
 
                 <section class="work-exp" id="preview-work-experience">
-                    <h2>Work Experience</h2>
+                    <h3>Work Experience</h3>
                 </section>
 
                 <section class="education" id="preview-education">
-                    <h2>Education</h2>
+                    <h3>Education</h3>
                 </section>
 
                 <section class="skills">
-                    <h2>Skills</h2>
+                    <h3>Skills</h3>
                     <ul id="preview-skills"></ul>
                 </section>
 
                 <section class="projects" id="preview-projects">
-                    
+                    <h3>Projects</h3>
                 </section>
             </div>
         </div>
@@ -68,6 +76,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="scripts/script.js"></script>
     <script src="scripts/generate.js"></script>
-    
+    <script src="scripts/tabs.js"></script>
 </body>
 </html>

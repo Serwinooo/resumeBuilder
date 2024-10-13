@@ -1,0 +1,32 @@
+.tabs {
+    display: flex;
+    justify-content: space-around;
+    background-color: #f1f1f1;
+    padding: 10px 0;
+    border-bottom: 2px solid #ddd;
+    position: sticky; /* Keep navbar sticky at the top */
+    top: 0;
+    z-index: 1000;
+    height: 60px; /* Set a fixed height for the navbar */
+}
+
+/* Styling for individual tab buttons */
+.tab-button {
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #f1f1f1;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.tab-button:hover {
+    background-color: #ddd;
+}
+
+.tab-button.active {
+    background-color: white;
+    border-bottom: 2px solid #fff;
+    font-weight: bold;
+}
