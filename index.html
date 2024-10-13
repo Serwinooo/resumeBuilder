@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-section">
+            <h1>Resume Builder</h1>
+            <label for="name">Name:</label>
+            <input type="text" id="name" placeholder="Your Name">
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" placeholder="(123) 456-7890">
+            <label for="location">Location:</label>
+            <input type="text" id="location" placeholder="City, Country">
+            <label for="website">Website:</label>
+            <input type="url" id="website" placeholder="https://yourwebsite.com">
+            
+            <div id="work-experience"></div>
+            <button id="add-experience">Add Work Experience</button>
+
+            <div id="education"></div>
+            <button id="add-education">Add Education</button>
+
+            <div id="skills"></div>
+            <button id="add-skill">Add Skill</button>
+
+            <div id="projects"></div>
+            <button id="add-project">Add Project</button>
+        </div>
+        
+        <div class="preview-section">
+            <h1>Preview</h1>
+            <div class="resume-container">
+                <header class="header">
+                    <h1 id="preview-name">Your Name</h1>
+                    <p class="contact-info">
+                        <span id="preview-phone">Phone: (123) 456-7890</span> |
+                        <span id="preview-location">Location: City, Country</span> |
+                        <span id="preview-website"><a href="#">yourwebsite.com</a></span>
+                    </p>
+                </header>
+
+                <section class="work-exp" id="preview-work-experience">
+                    <h2>Work Experience</h2>
+                </section>
+
+                <section class="education" id="preview-education">
+                    <h2>Education</h2>
+                </section>
+
+                <section class="skills">
+                    <h2>Skills</h2>
+                    <ul id="preview-skills"></ul>
+                </section>
+
+                <section class="projects" id="preview-projects">
+                    
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <button id="generate-pdf" class="action-button">Generate PDF</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="scripts/script.js"></script>
+    <script src="scripts/generate.js"></script>
+    
+</body>
+</html>
