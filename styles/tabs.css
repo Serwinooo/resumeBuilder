@@ -1,32 +1,105 @@
-.tabs {
-    display: flex;
-    justify-content: space-around;
-    background-color: #f1f1f1;
-    padding: 10px 0;
-    border-bottom: 2px solid #ddd;
-    position: sticky; /* Keep navbar sticky at the top */
-    top: 0;
-    z-index: 1000;
-    height: 60px; /* Set a fixed height for the navbar */
+/* Styling for form sections */
+.form-section h1 {
+    font-size: 24px;
+    margin-bottom: 10px; /* Reduce spacing */
 }
 
-/* Styling for individual tab buttons */
-.tab-button {
-    padding: 10px 20px;
-    cursor: pointer;
-    background-color: #f1f1f1;
-    border: none;
-    outline: none;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-}
-
-.tab-button:hover {
-    background-color: #ddd;
-}
-
-.tab-button.active {
-    background-color: white;
-    border-bottom: 2px solid #fff;
+.form-section label {
+    display: block;
+    margin-bottom: 5px; /* Reduce spacing */
+    font-size: 14px;
     font-weight: bold;
 }
+
+.form-section input, 
+.form-section textarea {
+    width: 100%; /* Full width for inputs */
+    padding: 10px; /* Add padding for better spacing */
+    margin-bottom: 10px; /* Space between input fields */
+    border: 1px solid #ccc; /* Light border for inputs */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 14px; /* Input text size */
+    box-sizing: border-box; /* Ensure padding doesn't overflow */
+}
+
+.form-section input[type="date"], 
+.form-section input[type="tel"], 
+.form-section input[type="url"] {
+    font-family: 'Times New Roman', Times, serif; /* Match the font */
+    font-size: 14px;
+}
+
+.form-section textarea {
+    height: 100px; /* Default height for text areas */
+    resize: vertical; /* Allow vertical resizing */
+}
+
+.form-section input:focus, 
+.form-section textarea:focus {
+    border-color: #0066cc; /* Highlighted border on focus */
+    outline: none; /* Remove default focus outline */
+    box-shadow: 0 0 5px rgba(0, 102, 204, 0.5); /* Add focus shadow */
+}
+
+.form-section button {
+    display: inline-block; /* Inline-block for buttons */
+    padding: 8px 16px; /* Adjust button padding */
+    margin-top: 10px;
+    margin-right: 5px; /* Space between buttons */
+    background-color: #0066cc; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
+    font-size: 13px; /* Smaller font size */
+}
+
+.form-section button:hover {
+    background-color: #004c99; /* Darker background on hover */
+}
+
+.form-section button.remove-experience, 
+.form-section button.remove-education, 
+.form-section button.remove-skill, 
+.form-section button.remove-project {
+    background-color: #e60000; /* Red background for remove buttons */
+}
+
+.form-section button.remove-experience:hover, 
+.form-section button.remove-education:hover, 
+.form-section button.remove-skill:hover, 
+.form-section button.remove-project:hover {
+    background-color: #cc0000; /* Darker red on hover */
+}
+
+/* Additional margin and alignment adjustments */
+.form-section .job-title, 
+.form-section .company, 
+.form-section .start-date, 
+.form-section .end-date,
+.form-section .degree, 
+.form-section .school-name,
+.form-section .skill,
+.form-section .project-title {
+    margin-bottom: 10px; /* Add margin between fields */
+}
+
+.form-section h3 {
+    margin-top: 20px; /* Space above section titles */
+}
+
+.form-section .add-experience, 
+.form-section .add-education, 
+.form-section .add-skill, 
+.form-section .add-project {
+    margin-top: 15px;
+    background-color: #28a745; /* Green for "Add" buttons */
+}
+
+.form-section .add-experience:hover, 
+.form-section .add-education:hover, 
+.form-section .add-skill:hover, 
+.form-section .add-project:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+

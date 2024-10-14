@@ -6,6 +6,7 @@
     <title>Resume Builder</title>
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/tabs.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="container">
@@ -18,64 +19,71 @@
             <button class="tab-button" data-tab="projects">Projects</button>
         </div>
 
-        <!-- Form Sections -->
-        <div class="form-sections">
-            <div class="form-section active" id="personal-info">
-                <h1>Personal Info</h1>
-                <label for="name">Name:</label>
-                <input type="text" id="name" placeholder="Your Name">
-                <label for="phone">Phone:</label>
-                <input type="tel" id="phone" placeholder="(123) 456-7890">
-                <label for="location">Location:</label>
-                <input type="text" id="location" placeholder="City, Country">
-                <label for="website">Website:</label>
-                <input type="url" id="website" placeholder="https://yourwebsite.com">
+        <!-- Content Section for Form and Preview -->
+        <div class="content">
+            <!-- Form Sections -->
+            <div class="form-sections">
+                <div class="form-section active" id="personal-info">
+                    <h1>Personal Info</h1>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" placeholder="Your Name">
+                    <label for="phone">Phone:</label>
+                    <input type="tel" id="phone" placeholder="(123) 456-7890">
+                    <label for="location">Location:</label>
+                    <input type="text" id="location" placeholder="City, Country">
+                    <label for="website">Website:</label>
+                    <input type="url" id="website" placeholder="https://yourwebsite.com">
+                </div>
+
+                <!-- The dynamically created sections will go here -->
+                <div id="work-experience" class="form-section"></div>
+                <div id="education" class="form-section"></div>
+                <div id="skills" class="form-section"></div>
+                <div id="projects" class="form-section"></div>
             </div>
+        <div class="preview-wrapper">
+            <!-- Preview Section -->
+            <div class="preview-section">
+                <h1>Preview</h1>
+                <div class="resume-container">
+                    <header class="header">
+                        <h2 id="preview-name">Your Name</h2>
+                        <p class="contact-info">
+                            <span id="preview-phone">Phone: (123) 456-7890</span> |
+                            <span id="preview-location">Location: City, Country</span> |
+                            <span id="preview-website"><a href="#">yourwebsite.com</a></span>
+                        </p>
+                    </header>
 
-            <!-- The dynamically created sections will go here -->
-            <div id="work-experience" class="form-section"></div>
-            <div id="education" class="form-section"></div>
-            <div id="skills" class="form-section"></div>
-            <div id="projects" class="form-section"></div>
-        </div>
+                    <section class="work-exp" id="preview-work-experience">
+                        <h3>Work Experience</h3>
+                    </section>
 
-        <!-- Preview Section -->
-        <div class="preview-section">
-            <h1>Preview</h1>
-            <div class="resume-container">
-                <header class="header">
-                    <h1 id="preview-name">Your Name</h1>
-                    <p class="contact-info">
-                        <span id="preview-phone">Phone: (123) 456-7890</span> |
-                        <span id="preview-location">Location: City, Country</span> |
-                        <span id="preview-website"><a href="#">yourwebsite.com</a></span>
-                    </p>
-                </header>
+                    <section class="education" id="preview-education">
+                        <h3>Education</h3>
+                    </section>
 
-                <section class="work-exp" id="preview-work-experience">
-                    <h3>Work Experience</h3>
-                </section>
+                    <section class="skills">
+                        <h3>Skills</h3>
+                        <ul id="preview-skills"></ul>
+                    </section>
 
-                <section class="education" id="preview-education">
-                    <h3>Education</h3>
-                </section>
-
-                <section class="skills">
-                    <h3>Skills</h3>
-                    <ul id="preview-skills"></ul>
-                </section>
-
-                <section class="projects" id="preview-projects">
-                    <h3>Projects</h3>
-                </section>
+                    <section class="projects" id="preview-projects">
+                        <h3>Projects</h3>
+                    </section>
+                </div>
+            </div>
+            <button id="generate-pdf" class="action-button generate-button">
+                <i class="fas fa-download"></i> Generate PDF
+            </button>
             </div>
         </div>
     </div>
 
-    <button id="generate-pdf" class="action-button">Generate PDF</button>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="scripts/script.js"></script>
     <script src="scripts/generate.js"></script>
     <script src="scripts/tabs.js"></script>
 </body>
+
 </html>
