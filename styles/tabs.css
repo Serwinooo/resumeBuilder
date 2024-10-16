@@ -81,11 +81,11 @@
 .form-section .school-name,
 .form-section .skill,
 .form-section .project-title {
-    margin-bottom: 10px; /* Add margin between fields */
+    margin-bottom: 10px;
 }
 
 .form-section h3 {
-    margin-top: 20px; /* Space above section titles */
+    margin-top: 20px; 
 }
 
 .form-section .add-experience, 
@@ -101,5 +101,13 @@
 .form-section .add-skill:hover, 
 .form-section .add-project:hover {
     background-color: #218838; /* Darker green on hover */
+}
+
+.current-job{
+    /* left: 0; */
+    /* margin-left: -310px; */
+    height: 20px;
+    width: 20px;
+    /* padding: 0; */
 }
 

@@ -89,8 +89,8 @@ document.addEventListener('DOMContentLoaded', function () {
         
             previewExperienceItem.innerHTML = `<div>
                 <h4>${jobTitle.value || 'Job Title'} - ${company.value || 'Company'}</h4>
-                <p>${employmentDates}</p>
-                <p>${formattedDescription || 'Brief description of job responsibilities and achievements.'}</p>
+                <p class="dateInfo">${employmentDates}</p>
+                <p class="descriptionInfo">${formattedDescription || 'Brief description of job responsibilities and achievements.'}</p>
             </div>`;
         }
         
@@ -185,8 +185,8 @@ document.addEventListener('DOMContentLoaded', function () {
         
             previewEducationItem.innerHTML = `
                 <h4>${degree.value || 'Degree'} - ${schoolName.value || 'School'}</h4>
-                <p>Graduation: ${graduationDate.value || 'Year'}</p>
-                <p>${formattedAchievements || ''}</p>
+                <p class="dateInfo">Year Graduated: ${graduationDate.value || 'Year'}</p>
+                <p class="descriptionInfo">${formattedAchievements || ''}</p>
             `;
         }           
     
@@ -335,7 +335,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             previewProjectItem.innerHTML = `
                 <h4>${projectTitle.value || 'Project Title'}</h4>
-                <p>${form || 'Brief project description.'}</p>
+                <p class="descriptionInfo">${formattedProjectDesc || 'Brief project description.'}</p>
             `;
         }
     
